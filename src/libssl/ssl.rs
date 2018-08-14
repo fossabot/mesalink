@@ -2038,7 +2038,7 @@ mod tests {
             mesalink_sk_X509_free(certs);
             mesalink_X509_free(cert);
 
-            MesalinkTestSession { ctx: ctx, ssl: ssl }
+            MesalinkTestSession { ctx, ssl }
         }
 
         fn new_server_session(
@@ -2078,7 +2078,7 @@ mod tests {
                 "Faield to set fd"
             );
             assert_eq!(SSL_SUCCESS, mesalink_SSL_accept(ssl), "Failed to accept");
-            MesalinkTestSession { ctx: ctx, ssl: ssl }
+            MesalinkTestSession { ctx, ssl }
         }
 
         fn read(&self, buf: &mut [u8]) -> c_int {
